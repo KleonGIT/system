@@ -9,7 +9,8 @@
                     <div class="card-inner">
                         <table class="datatable-init table table-bordered table-hover">
                             <span style="float: right">
-                                <button class="btn btn-primary btn-round" data-bs-toggle="modal" data-bs-target="#registration"> 
+                                <button class="btn btn-primary btn-round" data-bs-toggle="modal"
+                                    data-bs-target="#registration">
                                     <em class="icon ni ni-plus-circle"></em>&ensp;
                                     Register New Customer
                                 </button>
@@ -26,18 +27,20 @@
                             </thead>
                             <tbody>
                                 @foreach ($customers as $data)
-                                <tr style="cursor: pointer">
-                                    <td>1.</td>
-                                    <td>{{ $data->cus_last_name }}, {{ $data->cus_first_name }}</td>
-                                    <td>{{ $data->cus_phone_number }}</td>
-                                    <td>{{ $data->cus_email }}</td>
-                                    <td>{{ $data->cus_address }}, {{ $data->cus_city }}, {{ $data->cus_state }}, {{ $data->cus_postal_code }}, {{ $data->cus_country }}</td>
-                                    <td>
-                                        <button class="btn btn-xs btn-block btn-light bg-white text-dark">
-                                            <em class="icon ni ni-edit"></em>
-                                        </button>
-                                    </td>
-                                </tr>
+                                    <tr style="cursor: pointer">
+                                        <td>1.</td>
+                                        <td>{{ $data->cus_last_name }}, {{ $data->cus_first_name }}</td>
+                                        <td>{{ $data->cus_phone_number }}</td>
+                                        <td>{{ $data->cus_email }}</td>
+                                        <td>{{ $data->cus_address }}, {{ $data->cus_city }}, {{ $data->cus_state }},
+                                            {{ $data->cus_postal_code }}, {{ $data->cus_country }}</td>
+                                        <td>
+                                            <a href="{{ route('customer.edit', $data->id) }}"
+                                                class="btn btn-xs btn-block btn-light bg-white text-dark">
+                                                <em class="icon ni ni-edit"></em>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -60,185 +63,182 @@
                     <hr class="mt-2 mb-2">
                     {{-- --}}
                     <form action="{{ route('customer.save') }}" method="POST">
-                    @csrf
-                    <!-- First Name -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_fn">First Name <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the First Name here.</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <div class="form-icon form-icon-right">
-                                    <em class="icon ni ni-info"></em>
+                        @csrf
+                        <!-- First Name -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_fn">First Name <b
+                                            class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the First Name here.</span>
                                 </div>
-                                <input type="text" class="form-control" id="inp_fn" name="inp_fn" 
-                                    placeholder="Enter First Name here..." required>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Last Name -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_ln">Last Name <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the Last Name here.</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <div class="form-icon form-icon-right">
-                                    <em class="icon ni ni-info"></em>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <div class="form-icon form-icon-right">
+                                        <em class="icon ni ni-info"></em>
+                                    </div>
+                                    <input type="text" class="form-control" id="inp_fn" name="inp_fn"
+                                        placeholder="Enter First Name here..." required>
                                 </div>
-                                <input type="text" class="form-control" id="inp_ln" name="inp_ln" 
-                                    placeholder="Enter Last Name here..." required>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Email -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_email">Email <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the Email here.</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <div class="form-icon form-icon-right">
-                                    <em class="icon ni ni-mail"></em>
+                        <!-- Last Name -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_ln">Last Name <b
+                                            class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the Last Name here.</span>
                                 </div>
-                                <input type="text" class="form-control" id="inp_email" name="inp_email" 
-                                    placeholder="Enter Email here..." required>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Phone Number -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_phone">Phone Number <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the Phone Number here.</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <div class="form-icon form-icon-right">
-                                    <em class="icon ni ni-call"></em>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <div class="form-icon form-icon-right">
+                                        <em class="icon ni ni-info"></em>
+                                    </div>
+                                    <input type="text" class="form-control" id="inp_ln" name="inp_ln"
+                                        placeholder="Enter Last Name here..." required>
                                 </div>
-                                <input type="text" class="form-control" id="inp_phone" name="inp_phone" 
-                                    placeholder="Enter Phone Number here..." required>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Address -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_address">Address <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the Address here.</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <div class="form-icon form-icon-right">
-                                    <em class="icon ni ni-map-pin"></em>
+                        <!-- Email -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_email">Email <b class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the Email here.</span>
                                 </div>
-                                <input type="text" class="form-control" id="inp_address" name="inp_address" 
-                                    placeholder="Enter Address here..." required>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <div class="form-icon form-icon-right">
+                                        <em class="icon ni ni-mail"></em>
+                                    </div>
+                                    <input type="text" class="form-control" id="inp_email" name="inp_email"
+                                        placeholder="Enter Email here..." required>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- City -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_city">City <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the City here.</span>
+                        <!-- Phone Number -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_phone">Phone Number <b
+                                            class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the Phone Number here.</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <div class="form-icon form-icon-right">
+                                        <em class="icon ni ni-call"></em>
+                                    </div>
+                                    <input type="text" class="form-control" id="inp_phone" name="inp_phone"
+                                        placeholder="Enter Phone Number here..." required>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="inp_city" name="inp_city" 
-                                    placeholder="Enter City here..." required>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- State -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_state">State <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the State here.</span>
+                        <!-- Address -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_address">Address <b
+                                            class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the Address here.</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <div class="form-icon form-icon-right">
+                                        <em class="icon ni ni-map-pin"></em>
+                                    </div>
+                                    <input type="text" class="form-control" id="inp_address" name="inp_address"
+                                        placeholder="Enter Address here..." required>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="inp_state" name="inp_state" 
-                                    placeholder="Enter State here..." required>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Postal Code -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_postal">Postal <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the Postal here.</span>
+                        <!-- City -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_city">City <b class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the City here.</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="inp_city" name="inp_city"
+                                        placeholder="Enter City here..." required>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="inp_postal" name="inp_postal" 
-                                    placeholder="Enter Postal here..." required>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Country -->
-                    <div class="row mt-2 allign-center">
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label class="form-label" for="inp_country">Country <b
-                                        class="text-danger">*</b></label>
-                                <span class="form-note">Specify the Country here.</span>
+                        <!-- State -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_state">State <b class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the State here.</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="inp_state" name="inp_state"
+                                        placeholder="Enter State here..." required>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="inp_country" name="inp_country" 
-                                    placeholder="Enter Country here..." required>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Submit Button -->
-                    <div class="row mt-4">
-                        <div class="col-lg-5"></div>
-                        <div class="col-lg-7">
-                            <button type="submit" class="btn btn-primary btn-block">
-                                <em class="icon ni ni-save"></em>&ensp;
-                                Submit New Customer
-                            </button>
+                        <!-- Postal Code -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_postal">Postal <b
+                                            class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the Postal here.</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="inp_postal" name="inp_postal"
+                                        placeholder="Enter Postal here..." required>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+                        <!-- Country -->
+                        <div class="row mt-2 allign-center">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="inp_country">Country <b
+                                            class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the Country here.</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="inp_country" name="inp_country"
+                                        placeholder="Enter Country here..." required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="row mt-4">
+                            <div class="col-lg-5"></div>
+                            <div class="col-lg-7">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <em class="icon ni ni-save"></em>&ensp;
+                                    Submit New Customer
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

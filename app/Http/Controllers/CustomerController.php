@@ -7,12 +7,14 @@ use App\Models\CustomerModel;
 
 class CustomerController extends Controller
 {
-    public static function index(){
+    public static function index()
+    {
         $customers = CustomerModel::get();
         return view('pages.customers.index')->with(['customers' => $customers]);
     }
 
-    public static function store(Request $request){
+    public static function store(Request $request)
+    {
         // validate the request
         $request->validate([
             'inp_ln' => 'required|string|max:255',
@@ -42,4 +44,40 @@ class CustomerController extends Controller
         // redirect back with success message
         return redirect()->back()->with('success', 'Customer addedd successfuly!');
     }
+
+    public function edit($id)
+    {
+        $customers = CustomerModel::findOrFail($id);
+        return view('pages.customers.edit', compact('customers'));
+    }
+
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'cus_first_name' => 'required',
+        'cus_last_name' => 'required',
+        'cus_email' => 'required|email',
+        'cus_phone_number' => 'required',
+        'cus_address' => 'required',
+        'cus_city' => 'required',
+        'cus_state' => 'required',
+        'cus_postal_code' => 'required',
+        'cus_country' => 'required',
+    ]);
+
+    $customers = CustomerModel::findOrFail($id);
+    $customers->update([
+        'cus_first_name' => $request->cus_first_name,
+        'cus_last_name' => $request->cus_last_name,
+        'cus_email' => $request->cus_email,
+        'cus_phone_number' => $request->cus_phone_number,
+        'cus_address' => $request->cus_address,
+        'cus_city' => $request->cus_city,
+        'cus_state' => $request->cus_state,
+        'cus_postal_code' => $request->cus_postal_code,
+        'cus_country' => $request->cus_country,
+    ]);
+
+    return redirect()->route('pages.customers.index')->with('success', 'Customer updated successfully');
+}
 }

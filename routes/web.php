@@ -21,4 +21,5 @@ Route::middleware([
     Route::post('/customer/registration', [CustomerController::class, 'store'])->name('customer.save');
     Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+    Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('customer.delete');
 });

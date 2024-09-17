@@ -26,19 +26,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $counter = 1; @endphp
                                 @foreach ($customers as $data)
                                     <tr style="cursor: pointer">
-                                        <td>1.</td>
+                                        <td>{{ $counter++ }}</td>
                                         <td>{{ $data->cus_last_name }}, {{ $data->cus_first_name }}</td>
                                         <td>{{ $data->cus_phone_number }}</td>
                                         <td>{{ $data->cus_email }}</td>
                                         <td>{{ $data->cus_address }}, {{ $data->cus_city }}, {{ $data->cus_state }},
-                                            {{ $data->cus_postal_code }}, {{ $data->cus_country }}</td>
+                                            {{ $data->cus_postal_code }}, {{ $data->cus_country }}
+                                        </td>
                                         <td>
                                             <a href="{{ route('customer.edit', $data->id) }}"
                                                 class="btn btn-xs btn-block btn-light bg-white text-dark">
                                                 <em class="icon ni ni-edit"></em>
                                             </a>
+                                            <form action="{{ route('customer.delete', $data->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-xs btn-block btn-danger">
+                                                    <em class="icon ni ni-trash"></em>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -52,32 +52,41 @@ class CustomerController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'cus_first_name' => 'required',
-        'cus_last_name' => 'required',
-        'cus_email' => 'required|email',
-        'cus_phone_number' => 'required',
-        'cus_address' => 'required',
-        'cus_city' => 'required',
-        'cus_state' => 'required',
-        'cus_postal_code' => 'required',
-        'cus_country' => 'required',
-    ]);
+    {
+        $request->validate([
+            'cus_first_name' => 'required',
+            'cus_last_name' => 'required',
+            'cus_email' => 'required|email',
+            'cus_phone_number' => 'required',
+            'cus_address' => 'required',
+            'cus_city' => 'required',
+            'cus_state' => 'required',
+            'cus_postal_code' => 'required',
+            'cus_country' => 'required',
+        ]);
 
-    $customers = CustomerModel::findOrFail($id);
-    $customers->update([
-        'cus_first_name' => $request->cus_first_name,
-        'cus_last_name' => $request->cus_last_name,
-        'cus_email' => $request->cus_email,
-        'cus_phone_number' => $request->cus_phone_number,
-        'cus_address' => $request->cus_address,
-        'cus_city' => $request->cus_city,
-        'cus_state' => $request->cus_state,
-        'cus_postal_code' => $request->cus_postal_code,
-        'cus_country' => $request->cus_country,
-    ]);
+        $customers = CustomerModel::findOrFail($id);
+        $customers->update([
+            'cus_first_name' => $request->cus_first_name,
+            'cus_last_name' => $request->cus_last_name,
+            'cus_email' => $request->cus_email,
+            'cus_phone_number' => $request->cus_phone_number,
+            'cus_address' => $request->cus_address,
+            'cus_city' => $request->cus_city,
+            'cus_state' => $request->cus_state,
+            'cus_postal_code' => $request->cus_postal_code,
+            'cus_country' => $request->cus_country,
+        ]);
 
-    return redirect()->route('pages.customers.index')->with('success', 'Customer updated successfully');
-}
+        return redirect()->route('pages.customers.index')->with('success', 'Customer updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $customer = CustomerModel::findOrFail($id);
+        $customer->delete();
+
+        return redirect()->route('pages.customers.index')->with('success', 'Customer deleted successfully');
+    }
+
 }

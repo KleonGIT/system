@@ -9,7 +9,7 @@
         </div>
 
         <div class="nk-sidebar-brand">
-            <a href="html/index.html" class="logo-link nk-sidebar-logo">
+            <a href="#" class="logo-link nk-sidebar-logo">
                 <img class="logo-dark" style="height: 50px;" src="{{ asset('/storage/logo.png') }}"
                     srcset="{{ asset('/storage/logo.png') }} 2x" alt="logo">
                 <img class="logo-img mt-1 pt-0" style="height: 60px;" src="{{ asset('/storage/logo.png') }}"

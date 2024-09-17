@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="inp_phone">Phone Number <b
                                         class="text-danger">*</b></label>
-                                        <span class="form-note">Edit the Phone Number here.</span>
+                                <span class="form-note">Edit the Phone Number here.</span>
                             </div>
                         </div>
                         <div class="col-lg-7">
@@ -113,7 +113,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="inp_postal">Postal Code <b
                                         class="text-danger">*</b></label>
-                                        <span class="form-note">Edit the Postal Code here.</span>
+                                <span class="form-note">Edit the Postal Code here.</span>
                             </div>
                         </div>
                         <div class="col-lg-7">
@@ -142,6 +142,10 @@
                         <div class="col-lg-7">
                             <button type="submit" class="btn btn-primary">
                                 <em class="icon ni ni-save"></em>&ensp;Update Customer
+                            </button>
+                            <button type="button" class="btn btn-secondary"
+                                onclick="window.location.href='{{ route('pages.customers.index') }}'">
+                                Cancel
                             </button>
                         </div>
                     </div>

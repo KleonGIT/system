@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">{{ __('Manage Faculty') }}</x-slot>
-    <x-slot name="subHeader">{{ __('You can manage your faculty staff here.') }}</x-slot>
+    <x-slot name="subHeader">{{ __('You can manage faculty staff here.') }}</x-slot>
 
     <div class="nk-block">
         <div class="row g-gs">

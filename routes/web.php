@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
-use App\Models\CustomerModel;
+use App\Http\Controllers\StudentController;
+use App\Models\SutdentModel;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,9 +17,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/customers', [CustomerController::class, 'index'])->name('pages.customers.index');
-    Route::post('/customer/registration', [CustomerController::class, 'store'])->name('customer.save');
-    Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
-    Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
-    Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('customer.delete');
+    // Student
+    Route::get('/students', [StudentController::class, 'index'])->name('pages.students.index');
+    Route::post('/student/registration', [StudentController::class, 'store'])->name('student.save');
+    Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
+    Route::post('/student/update/{id}', [StudentController::class, 'update'])->name('student.update');
+    Route::delete('/student/delete/{id}', [StudentController::class, 'destroy'])->name('student.delete');
 });

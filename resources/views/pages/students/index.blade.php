@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">{{ _('Manage Customer') }}</x-slot>
-    <x-slot name="subHeader">{{ _('You can manage your customer and register new customer here.') }}</x-slot>
+    <x-slot name="header">{{ _('Manage Student') }}</x-slot>
+    <x-slot name="subHeader">{{ _('You can manage your student and register new student here.') }}</x-slot>
 
     <div class="nk-block">
         <div class="row g-gs">
@@ -12,32 +12,34 @@
                                 <button class="btn btn-primary btn-round" data-bs-toggle="modal"
                                     data-bs-target="#registration">
                                     <em class="icon ni ni-plus-circle"></em>&ensp;
-                                    Register New Customer
+                                    Register New Student
                                 </button>
                             </span>
                             <thead>
                                 <tr>
                                     <th width="20">#</th>
-                                    <th>Customer Name</th>
-                                    <th>Phone Number</th>
+                                    <th>Student Name</th>
                                     <th>Email Address</th>
-                                    <th>Complete Address</th>
+                                    <th>Age</th>
+                                    <th>Strand</th>
+                                    <th>Grade Level</th>
+                                    <th>Section</th>
                                     <th width="100" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $counter = 1; @endphp
-                                @foreach ($customers as $data)
+                                @foreach ($students as $data)
                                     <tr style="cursor: pointer">
                                         <td>{{ $counter++ }}</td>
-                                        <td>{{ $data->cus_last_name }}, {{ $data->cus_first_name }}</td>
-                                        <td>{{ $data->cus_phone_number }}</td>
-                                        <td>{{ $data->cus_email }}</td>
-                                        <td>{{ $data->cus_address }}, {{ $data->cus_city }}, {{ $data->cus_state }},
-                                            {{ $data->cus_postal_code }}, {{ $data->cus_country }}
-                                        </td>
+                                        <td>{{ $data->stud_last_name }}, {{ $data->stud_first_name }}</td>
+                                        <td>{{ $data->stud_email }}</td>
+                                        <td>{{ $data->stud_age }}</td>
+                                        <td>{{ $data->stud_strand }}</td>
+                                        <td>{{ $data->stud_grade_level }}</td>
+                                        <td>{{ $data->stud_section }}</td>
                                         <td>
-                                            <a href="{{ route('customer.edit', $data->id) }}"
+                                            <a href="{{ route('student.edit', $data->id) }}"
                                                 class="btn btn-xs btn-block btn-light bg-white text-dark">
                                                 <em class="icon ni ni-edit"></em>
                                             </a>
@@ -50,17 +52,17 @@
                                                 <div class="modal-dialog modal-md">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Delete Customer</h5>
+                                                            <h5 class="modal-title">Delete student</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p>Are you sure you want to delete this customer?</p>
+                                                            <p>Are you sure you want to delete this student?</p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cancel</button>
-                                                            <form action="{{ route('customer.delete', $data->id) }}"
+                                                            <form action="{{ route('student.delete', $data->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -89,11 +91,11 @@
                 </a>
                 <div class="modal-body">
                     <h1 class="nk-block-title page-title">
-                        Register New Customer
+                        Register New Student
                     </h1>
                     <hr class="mt-2 mb-2">
                     {{-- --}}
-                    <form action="{{ route('customer.save') }}" method="POST">
+                    <form action="{{ route('student.save') }}" method="POST">
                         @csrf
                         <!-- First Name -->
                         <div class="row mt-2 allign-center">
@@ -154,13 +156,13 @@
                             </div>
                         </div>
 
-                        <!-- Phone Number -->
+                        <!-- Age -->
                         <div class="row mt-2 allign-center">
                             <div class="col-lg-5">
                                 <div class="form-group">
-                                    <label class="form-label" for="inp_phone">Phone Number <b
+                                    <label class="form-label" for="inp_age">Age <b
                                             class="text-danger">*</b></label>
-                                    <span class="form-note">Specify the Phone Number here.</span>
+                                    <span class="form-note">Specify the Age here.</span>
                                 </div>
                             </div>
                             <div class="col-lg-7">
@@ -168,19 +170,19 @@
                                     <div class="form-icon form-icon-right">
                                         <em class="icon ni ni-call"></em>
                                     </div>
-                                    <input type="text" class="form-control" id="inp_phone" name="inp_phone"
-                                        placeholder="Enter Phone Number here..." required>
+                                    <input type="text" class="form-control" id="inp_age" name="inp_age"
+                                        placeholder="Enter Age here..." required>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Address -->
+                        <!-- Strand -->
                         <div class="row mt-2 allign-center">
                             <div class="col-lg-5">
                                 <div class="form-group">
-                                    <label class="form-label" for="inp_address">Address <b
+                                    <label class="form-label" for="inp_strand">Strand <b
                                             class="text-danger">*</b></label>
-                                    <span class="form-note">Specify the Address here.</span>
+                                    <span class="form-note">Specify the Strand here.</span>
                                 </div>
                             </div>
                             <div class="col-lg-7">
@@ -188,74 +190,40 @@
                                     <div class="form-icon form-icon-right">
                                         <em class="icon ni ni-map-pin"></em>
                                     </div>
-                                    <input type="text" class="form-control" id="inp_address" name="inp_address"
-                                        placeholder="Enter Address here..." required>
+                                    <input type="text" class="form-control" id="inp_strand" name="inp_strand"
+                                        placeholder="Enter Strand here..." required>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- City -->
+                        <!-- Grade Level -->
                         <div class="row mt-2 allign-center">
                             <div class="col-lg-5">
                                 <div class="form-group">
-                                    <label class="form-label" for="inp_city">City <b class="text-danger">*</b></label>
-                                    <span class="form-note">Specify the City here.</span>
+                                    <label class="form-label" for="inp_grade_level">Grade Level <b class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the Grade Level here.</span>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="form-control-wrap">
-                                    <input type="text" class="form-control" id="inp_city" name="inp_city"
-                                        placeholder="Enter City here..." required>
+                                    <input type="text" class="form-control" id="inp_grade_level" name="inp_grade_level"
+                                        placeholder="Enter Grade Level here..." required>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- State -->
+                        <!-- Section -->
                         <div class="row mt-2 allign-center">
                             <div class="col-lg-5">
                                 <div class="form-group">
-                                    <label class="form-label" for="inp_state">State <b class="text-danger">*</b></label>
-                                    <span class="form-note">Specify the State here.</span>
+                                    <label class="form-label" for="inp_section">Section <b class="text-danger">*</b></label>
+                                    <span class="form-note">Specify the Section here.</span>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="form-control-wrap">
-                                    <input type="text" class="form-control" id="inp_state" name="inp_state"
-                                        placeholder="Enter State here..." required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Postal Code -->
-                        <div class="row mt-2 allign-center">
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <label class="form-label" for="inp_postal">Postal <b
-                                            class="text-danger">*</b></label>
-                                    <span class="form-note">Specify the Postal here.</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="form-control-wrap">
-                                    <input type="text" class="form-control" id="inp_postal" name="inp_postal"
-                                        placeholder="Enter Postal here..." required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Country -->
-                        <div class="row mt-2 allign-center">
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <label class="form-label" for="inp_country">Country <b
-                                            class="text-danger">*</b></label>
-                                    <span class="form-note">Specify the Country here.</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="form-control-wrap">
-                                    <input type="text" class="form-control" id="inp_country" name="inp_country"
-                                        placeholder="Enter Country here..." required>
+                                    <input type="text" class="form-control" id="inp_section" name="inp_section"
+                                        placeholder="Enter Section here..." required>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +234,7 @@
                             <div class="col-lg-7">
                                 <button type="submit" class="btn btn-primary btn-block">
                                     <em class="icon ni ni-save"></em>&ensp;
-                                    Submit New Customer
+                                    Submit New student
                                 </button>
                             </div>
                         </div>

@@ -4,11 +4,13 @@
 <div class="nk-header nk-header-fixed is-light">
     <div class="container-fluid">
         <div class="nk-header-wrap">
-            
+
             <div class="nk-header-brand d-xl-none">
                 <a href="#" class="logo-link">
-                    <img class="logo-light logo-img" src="{{asset('/storage/logo.png')}}" srcset="{{asset('/storage/logo.png')}} 2x" alt="logo">
-                    <img class="logo-dark logo-img" src="{{asset('/storage/logo.png')}}" srcset="{{asset('/storage/logo.png')}} 2x" alt="logo-dark">
+                    <img class="logo-light logo-img" src="{{asset('/storage/logo.png')}}"
+                        srcset="{{asset('/storage/logo.png')}} 2x" alt="logo">
+                    <img class="logo-dark logo-img" src="{{asset('/storage/logo.png')}}"
+                        srcset="{{asset('/storage/logo.png')}} 2x" alt="logo-dark">
                 </a>
             </div>
             <div class="nk-header-news d-none d-xl-block">
@@ -18,14 +20,13 @@
                             <em class="icon ni ni-card-view"></em>
                         </div>
                         <div class="nk-news-text">
-                            <p>Do you know the latest update of {{ date('Y') }}? <span> A overview of our is now
-                                    available on YouTube</span></p>
+                            <p>SITC {{ date('Y') }}<span> A overview of our project is now
+                                    available on GitHub</span></p>
                             <em class="icon ni ni-external"></em>
                         </div>
                     </a>
                 </div>
             </div>
-
             <div class="nk-header-tools">
 
                 <ul class="nk-quick-nav">

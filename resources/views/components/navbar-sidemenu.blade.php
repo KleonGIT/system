@@ -35,7 +35,7 @@
                                 </a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="/semester" class="nk-menu-link">
+                                <a href="/semesters" class="nk-menu-link">
                                     <span class="nk-menu-icon"><em class="icon ni ni-calendar-alt"></em></span>
                                     <span class="nk-menu-text">Semester</span>
                                 </a>
@@ -49,7 +49,7 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="/department" class="nk-menu-link">
+                                <a href="/departments" class="nk-menu-link">
                                     <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
                                     <span class="nk-menu-text">Departments</span>
                                 </a>
@@ -75,7 +75,7 @@
                                 </a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="/subject" class="nk-menu-link">
+                                <a href="/subjects" class="nk-menu-link">
                                     <span class="nk-menu-icon"><em class="icon ni ni-book"></em></span>
                                     <span class="nk-menu-text">Subject</span>
                                 </a>

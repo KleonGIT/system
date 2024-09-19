@@ -94,4 +94,8 @@
     
 </body>
 
+<main>
+    @yield('dashboard')
+</main>
+
 </html>
